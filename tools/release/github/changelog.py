@@ -114,38 +114,33 @@ class Changelog:
     def _is_feature(self, pr: Dict) -> bool:
         """Belong to feature pull requests."""
         return any(
-            [
-                label[self.key_name] == self.label_feature
-                for label in pr[self.key_labels]
-            ]
+            label[self.key_name] == self.label_feature
+            for label in pr[self.key_labels]
         )
 
     def _is_bugfix(self, pr: Dict) -> bool:
         """Belong to bugfix pull requests."""
         return any(
-            [label[self.key_name] == self.label_bug for label in pr[self.key_labels]]
+            label[self.key_name] == self.label_bug for label in pr[self.key_labels]
         )
 
     def _is_improvement(self, pr: Dict) -> bool:
         """Belong to improvement pull requests."""
         return any(
-            [
-                label[self.key_name] == self.label_improvement
-                for label in pr[self.key_labels]
-            ]
+            label[self.key_name] == self.label_improvement
+            for label in pr[self.key_labels]
         )
 
     def _is_document(self, pr: Dict) -> bool:
         """Belong to document pull requests."""
         return any(
-            [
-                label[self.key_name] == self.label_document
-                for label in pr[self.key_labels]
-            ]
+            label[self.key_name] == self.label_document
+            for label in pr[self.key_labels]
         )
 
     def _is_chore(self, pr: Dict) -> bool:
         """Belong to chore pull requests."""
         return any(
-            [label[self.key_name] == self.label_chore for label in pr[self.key_labels]]
+            label[self.key_name] == self.label_chore
+            for label in pr[self.key_labels]
         )

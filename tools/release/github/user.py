@@ -31,7 +31,7 @@ class User:
 
     def contribution_num(self) -> Dict:
         """Get unique contributor with name and commit number."""
-        res = dict()
+        res = {}
         for pr in self.prs:
             user_id = pr["user"]["login"]
             res[user_id] = res.setdefault(user_id, 0) + 1
@@ -40,4 +40,4 @@ class User:
     def contributors(self) -> Set[str]:
         """Get unique contributor with name."""
         cn = self.contribution_num()
-        return {contributor for contributor in cn}
+        return set(cn)

@@ -34,8 +34,7 @@ def get_changelog(access_token: str, milestone: str) -> str:
     pr_merged_sort = sorted(pr_merged, key=lambda p: p["closed_at"])
 
     changelog = Changelog(pr_merged_sort)
-    changelog_text = changelog.generate()
-    return changelog_text
+    return changelog.generate()
 
 
 def get_contributor(access_token: str, milestone: str) -> str:

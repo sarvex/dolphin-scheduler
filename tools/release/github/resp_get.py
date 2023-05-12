@@ -61,7 +61,7 @@ class RespGet:
             content_dict = self.get(
                 url=self.url, headers=self.headers, params=curr_param
             )
-            data = content_dict.get("items")
-            if not data:
+            if data := content_dict.get("items"):
+                total.extend(data)
+            else:
                 return total
-            total.extend(data)

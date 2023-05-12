@@ -37,12 +37,7 @@ dev_zh_dir: Path = doc_dir.joinpath("zh", "development")
 
 def get_files_recurse(path: Path) -> Set:
     """Get all files recursively from given :param:`path`."""
-    res = set()
-    for p in path.rglob("*"):
-        if p.is_dir():
-            continue
-        res.add(p)
-    return res
+    return {p for p in path.rglob("*") if not p.is_dir()}
 
 
 def get_paths_uniq_suffix(paths: Set[Path]) -> Set:
@@ -66,8 +61,7 @@ def get_docs_img_path(paths: Set[Path]) -> Set:
     pattern = re.compile(r"../img[\w./-]+")
     for path in paths:
         content = path.read_text()
-        find = pattern.findall(content)
-        if find:
+        if find := pattern.findall(content):
             res |= {item.lstrip(".") for item in find}
     return res
 
